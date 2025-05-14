@@ -1,0 +1,9 @@
+export { default as ManagerDashboard } from "./ManagerDashboard";
+export { default as ManageTheaters } from "./ManageTheaters";
+export { default as ManageStaff } from "./ManageStaff";
+export { default as ManageRooms } from "./ManageRooms";
+export { default as ManageSeats } from "./ManageSeats";
+export { default as ManagePromotions } from "./ManagePromotions";
+export { default as ManageShowtimes } from "./ManageShowtimes";
+export { default as ManagerStatistics } from "./ManagerStatistics";
+export { default as ManageTickets } from "./ManageTickets";
