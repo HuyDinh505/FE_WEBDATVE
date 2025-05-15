@@ -6,8 +6,8 @@ import {
 } from "../utils/auth"; // Nhập hasPermission
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "https://be-web-datve-1.onrender.com/api";
-// const API_URL = "http://localhost:8000/api";
+// const API_URL = "https://be-web-datve-1.onrender.com/api";
+const API_URL = "http://127.0.0.1:8000/api";
 
 const AuthContext = createContext();
 
@@ -119,9 +119,9 @@ export const AuthProvider = ({ children }) => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem("token", data.token);
-        setNguoiDung(data.nguoiDung);
+        // const data = await response.json();
+        // localStorage.setItem("token", data.token);
+        // setNguoiDung(data.nguoiDung);
         return true;
       }
       return false;

@@ -7,3 +7,4 @@ export { default as ManagePromotions } from "./ManagePromotions";
 export { default as ManageShowtimes } from "./ManageShowtimes";
 export { default as ManagerStatistics } from "./ManagerStatistics";
 export { default as ManageTickets } from "./ManageTickets";
+export { default as ManagerMovieManagement } from "./ManagerMovieManagement";

@@ -11,6 +11,7 @@ import {
 import { showToast } from "../components/Toast/Toast";
 import { useAuth } from "../contexts/AuthContext";
 import axiosInstance from "../api/axios";
+import { formatCurrency } from "../utils/format";
 
 const Confirmation = () => {
   const { state } = useLocation();
@@ -18,6 +19,13 @@ const Confirmation = () => {
   const { nguoiDung } = useAuth();
   const timeLeftRef = useRef(175);
   const [timeLeft, setTimeLeft] = useState(timeLeftRef.current);
+
+  const { data: phim } = useGetChiTietPhimUS(state?.movieID);
+  const { data: rap, isLoading, isError } = useGetRapUS(state?.selectedTheater);
+  const { data: phong } = useGePhongUS(state?.selectedRoom);
+  const { data: loaives } = useGetLoaiVeUS();
+  const { data: dichvus } = useGetDVAnUongUS();
+  const { mutateAsync: postBooking } = usePostBookingUS();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -64,14 +72,6 @@ const Confirmation = () => {
     selectedSc,
     selectedFD,
   } = state;
-
-  const { data: phim } = useGetChiTietPhimUS(movieID);
-  const { data: rap, isLoading, isError } = useGetRapUS(selectedTheater);
-  const { data: phong } = useGePhongUS(selectedRoom);
-  const { data: loaives } = useGetLoaiVeUS();
-  const { data: dichvus } = useGetDVAnUongUS();
-
-  const { mutateAsync: postBooking } = usePostBookingUS();
 
   if (isLoading) {
     return <p>Đang tải dữ liệu...</p>;
@@ -135,7 +135,7 @@ const Confirmation = () => {
     let bookingData = {
       ma_nguoi_dung: nguoiDung.ma_nguoi_dung,
       ma_sc: selectedSc,
-      tong_tien: grandTotal,
+      tong_tien: Number(grandTotal).toFixed(2),
       ngay_dat_ve: formattedDate,
       loai_ve: loaive,
       ghe: ghe,
@@ -275,7 +275,7 @@ const Confirmation = () => {
 
         <div className="mt-6 border-t pt-3 text-lg font-bold flex justify-between text-gray-900">
           <span>SỐ TIỀN CẦN THANH TOÁN</span>
-          <span className="text-yellow-500">{grandTotal} VND</span>
+          <span className="text-yellow-500">{formatCurrency(grandTotal)}</span>
         </div>
 
         <button

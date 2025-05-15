@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const API_URL = "http://localhost:8000/api";
-const API_URL = "https://be-web-datve-1.onrender.com/api";
+const API_URL = "http://127.0.0.1:8000/api";
+// const API_URL = "https://be-web-datve-1.onrender.com/api";
 
 const api = axios.create({
   baseURL: API_URL,
@@ -89,6 +89,23 @@ export const managerAPI = {
     });
   },
   deleteMovie: (id) => api.delete(`/phim/${id}`),
+  //cho quản lý
+  getMoviesManager: () => api.get("/phim"),
+  createMovieManager: (data) =>
+    api.post("/manager/phim", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }),
+  updateMovieManager: (id, data) => {
+    data.append("_method", "PUT");
+    return api.post(`/manager/phim/${id}`, data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  },
+  deleteMovieManager: (id) => api.delete(`/manager/phim/${id}`),
 
   // Theaters
   getTheaters: () => api.get("/rap"),

@@ -46,6 +46,7 @@ import {
   ManageShowtimes,
   ManagerStatistics,
   ManageTickets,
+  ManagePromotions,
 } from "./pages/Manager";
 
 // Import Staff Components
@@ -56,6 +57,7 @@ import {
 } from "./pages/Staff";
 
 import { PERMISSIONS } from "./utils/auth";
+import ManagerMovieManagement from "./pages/Manager/ManagerMovieManagement";
 
 const App = () => {
   return (
@@ -212,72 +214,21 @@ const App = () => {
           <Route
             path="/manager"
             element={
-              <ManagerRoute requiredPermissions={[PERMISSIONS.XEM_RAP]}>
+              <ManagerRoute>
                 <ManagerLayout />
               </ManagerRoute>
             }
           >
             <Route index element={<ManagerDashboard />} />
-            <Route
-              path="theaters"
-              element={
-                <ManagerRoute requiredPermissions={[PERMISSIONS.XEM_RAP]}>
-                  <ManageTheaters />
-                </ManagerRoute>
-              }
-            />
-            <Route
-              path="staff"
-              element={
-                <ManagerRoute
-                  requiredPermissions={[PERMISSIONS.XEM_NGUOI_DUNG]}
-                >
-                  <ManageStaff />
-                </ManagerRoute>
-              }
-            />
-            <Route
-              path="rooms"
-              element={
-                <ManagerRoute requiredPermissions={[PERMISSIONS.XEM_RAP]}>
-                  <ManageRooms />
-                </ManagerRoute>
-              }
-            />
-            <Route
-              path="seats"
-              element={
-                <ManagerRoute requiredPermissions={[PERMISSIONS.XEM_RAP]}>
-                  <ManageSeats />
-                </ManagerRoute>
-              }
-            />
-            <Route
-              path="showtimes"
-              element={
-                <ManagerRoute
-                  requiredPermissions={[PERMISSIONS.XEM_LICH_CHIEU]}
-                >
-                  <ManageShowtimes />
-                </ManagerRoute>
-              }
-            />
-            <Route
-              path="statistics"
-              element={
-                <ManagerRoute requiredPermissions={[PERMISSIONS.XEM_THONG_KE]}>
-                  <ManagerStatistics />
-                </ManagerRoute>
-              }
-            />
-            <Route
-              path="tickets"
-              element={
-                <ManagerRoute requiredPermissions={[PERMISSIONS.XEM_VE]}>
-                  <ManageTickets />
-                </ManagerRoute>
-              }
-            />
+            <Route path="theaters" element={<ManageTheaters />} />
+            <Route path="staff" element={<ManageStaff />} />
+            <Route path="rooms" element={<ManageRooms />} />
+            <Route path="seats" element={<ManageSeats />} />
+            <Route path="showtimes" element={<ManageShowtimes />} />
+            <Route path="statistics" element={<ManagerStatistics />} />
+            <Route path="tickets" element={<ManageTickets />} />
+            <Route path="promotions" element={<ManagePromotions />} />
+            <Route path="movies" element={<ManagerMovieManagement />} />
           </Route>
 
           {/* Staff Routes */}

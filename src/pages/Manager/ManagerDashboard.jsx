@@ -108,6 +108,12 @@ const ManagerDashboard = () => {
       description: "Xem báo cáo và thống kê",
       icon: "📊",
     },
+    {
+      title: "Quản lý phim",
+      path: "/manager/movies",
+      description: "Quản lý danh sách phim trong rạp",
+      icon: "🎬",
+    },
   ];
 
   // if (error) {

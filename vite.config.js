@@ -8,7 +8,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://be-web-datve-1.onrender.com",
+        // target: "https://be-web-datve-1.onrender.com",
+        target: "http://127.0.0.1:8000.com",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, "/api"),

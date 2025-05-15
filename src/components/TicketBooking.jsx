@@ -34,7 +34,7 @@ const TicketBooking = () => {
   const totalPrice = Object.entries(ticketCounts).reduce((acc, [id, count]) => {
     const price =
       loaives.find((lv) => lv.ma_loai_ve === parseInt(id))?.gia_ve || 0;
-    return acc + price * count;
+    return Number((acc + price * count).toFixed(2));
   }, 0);
 
   const totalFoodDrinkPrice = Object.entries(selectedFD).reduce(
@@ -45,12 +45,12 @@ const TicketBooking = () => {
       if (!item) {
         return acc;
       }
-      return acc + item.gia_tien * quantity;
+      return Number((acc + item.gia_tien * quantity).toFixed(2));
     },
     0
   );
   console.log(" totalFoodDrinkPrice", totalFoodDrinkPrice);
-  const grandTotal = totalPrice + totalFoodDrinkPrice;
+  const grandTotal = Number((totalPrice + totalFoodDrinkPrice).toFixed(2));
 
   const generateDates = () => {
     const today = new Date();

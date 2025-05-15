@@ -89,15 +89,7 @@ const ManagerLayout = () => {
                 Quản lý lịch chiếu
               </Link>
             </li>
-            <li>
-              <Link
-                to="/manager/statistics"
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700"
-              >
-                <FaChartLine className="mr-2" />
-                Thống kê
-              </Link>
-            </li>
+
             <li>
               <Link
                 to="/manager/tickets"
@@ -105,6 +97,24 @@ const ManagerLayout = () => {
               >
                 <FaTicketAlt className="mr-2" />
                 Quản lý vé
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/manager/movies"
+                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700"
+              >
+                <FaFilm className="mr-2" />
+                Quản lý phim
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/manager/statistics"
+                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700"
+              >
+                <FaChartLine className="mr-2" />
+                Thống kê
               </Link>
             </li>
           </ul>

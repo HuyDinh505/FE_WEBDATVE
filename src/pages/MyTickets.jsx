@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import axiosInstance from "../api/axios";
 import { showToast } from "../components/Toast/Toast";
+import { formatCurrency } from "../utils/format";
 
 const MyTickets = () => {
   const { nguoiDung } = useAuth();
@@ -80,7 +81,7 @@ const MyTickets = () => {
                       : ""}
                   </td>
                   <td className="p-3 font-semibold text-yellow-700">
-                    {ticket.tong_gia_tien?.toLocaleString("vi-VN")} đ
+                    {formatCurrency(ticket.tong_gia_tien)}
                   </td>
                   <td className="p-3">
                     {ticket.trang_thai === "Đang chờ thanh toán" && (
